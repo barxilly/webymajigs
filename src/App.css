@@ -1,0 +1,131 @@
+:root {
+    /*--sepia-bg: #f7f5f1;*/
+    --sepia-bg: linear-gradient(to bottom, #f7f0e3, #fff0d4);
+    --text-color: #333;
+    --item-bg: #f7eede;
+    --item-border: #ffffff;
+}
+
+body {
+    font-family: Ginto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--sepia-bg);
+    color: var(--text-color);
+}
+
+@font-face {
+    font-family: 'Ginto';
+    src: url('fonts/GintoVariable.ttf');
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+    height: 2em;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+main {
+    flex-grow: 1;
+    padding: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    padding: 1rem;
+}
+
+.grid-item {
+    background-color: var(--item-bg);
+    border-radius: 24px;
+    border: 1.25px solid var(--item-border);
+    padding: 1rem;
+    text-align: left;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 30px 15px 0px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    cursor: pointer;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 35px 20px 0px;
+}
+
+.item-image {
+    width: 100%;
+    height: 200px;
+    background-color: #e0e0e0;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 0.9rem;
+    /* Trim photo, not stretch */
+    object-fit: cover;
+}
+
+.hover-open {
+    display: none;
+    color: #666;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    background-color: #e0e0e0;
+    border-radius: 16px;
+    margin-top: 0.5rem;
+    text-align: left;
+}
+
+.grid-item:hover .hover-open {
+    display: block;
+}
+
+.item-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.item-desc {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0;
+}
+
+.item-tags {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 0.5rem;
+}
+
+.tag {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.tag-separator {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+}
