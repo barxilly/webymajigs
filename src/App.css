@@ -1,9 +1,10 @@
 :root {
     /*--sepia-bg: #f7f5f1;*/
-    --sepia-bg: linear-gradient(to bottom, #f7f0e3, #fff0d4);
+    --sepia-bg: linear-gradient(to bottom, #f7f0e3, #ffe5d4);
     --text-color: #333;
     --item-bg: #f7eede;
     --item-border: #ffffff;
+    background: var(--sepia-bg);
 }
 
 body {
@@ -80,18 +81,46 @@ main {
 }
 
 .hover-open {
-    display: none;
+    width: 0;
     color: #666;
     font-size: 0.9rem;
-    padding: 0.5rem;
+    padding: 0rem;
     background-color: #e0e0e0;
     border-radius: 16px;
     margin-top: 0.5rem;
     text-align: left;
+    overflow: hidden;
+    animation: close 0.3s ease forwards;
 }
 
 .grid-item:hover .hover-open {
-    display: block;
+    animation: open 0.3s ease forwards;
+}
+
+@keyframes open {
+    0% {
+        width: 0;
+        padding: 0rem;
+        opacity: 0;
+    }
+    100% {
+        width: auto;
+        padding: 2rem;
+        opacity: 1;
+    }
+}
+
+@keyframes close {
+    0% {
+        width: auto;
+        padding: 2rem;
+        opacity: 1;
+    }
+    100% {
+        width: 0;
+        padding: 0rem;
+        opacity: 0;
+    }
 }
 
 .item-title {
