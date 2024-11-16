@@ -14,8 +14,9 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: var(--sepia-bg);
+    background: url(/images/bg.gif), var(--sepia-bg);
     color: var(--text-color);
+    z-index: 0;
 }
 
 @font-face {
@@ -232,6 +233,49 @@ main {
 
 footer {
     text-align: center;
-    padding: 1.5rem;
+    padding: 0.7rem;
     font-size: 0.9rem;
+    position: fixed;
+    bottom: 1em;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: fit-content;
+    background: url(/images/bg.gif), #ffe5d4;
+    border-radius: 1em;
+    z-index: 1;
+}
+
+footer a,
+footer p {
+    color: #333;
+    text-decoration: none;
+}
+
+.eTvcjF {
+    width: 100% !important;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.cvBsnK {
+    display: none !important;
+}
+
+.footer-social {
+    color: #333;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-social:hover {
+    transform: translateY(-5px);
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 35px 20px 0px;
 }

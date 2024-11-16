@@ -3,12 +3,36 @@ import './App.css'
 import { FaVolumeHigh } from 'react-icons/fa6';
 import { Center } from '@mantine/core';
 import '@mantine/core/styles.css';
+import { useEffect } from 'react';
+
+declare global {
+  interface Window {
+    iFrameResize: any;
+  }
+}
 
 const bgm = new Audio('/sounds/back.mp3');
 bgm.loop = true;
 bgm.volume = 0.25;
 
 function App() {
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "/iframeResizer.min.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    script.onload = () => {
+      if (window.iFrameResize) {
+        window.iFrameResize({}, document.querySelector('iframe'));
+      }
+    };
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
   async function onLoad() {
     const fonts = ['Bubble Garden', 'Sushi Moshi', 'Nabla', 'Pixelify Sans', 'Ginto', 'Snowy Christa', 'Fizzy Soda', 'Romantic Party'];
     let title = document.getElementById('title');
@@ -88,6 +112,14 @@ function App() {
           </div>
 
           {/*
+          * LIVE
+          * Blog
+          */}
+          <div className="grid-item tag-react tag-tool" onMouseEnter={onHover} style={{ overflow: 'scroll', maxHeight: '35em' }}>
+            <iframe onLoad={() => window.iFrameResize && window.iFrameResize({}, document.querySelector('iframe'))} src="https://c92a78ac8af14b838c7918432ad9bcc1.elf.site" style={{ border: 'none', width: '100% !important' }}></iframe>
+          </div>
+
+          {/*
           * FBI Game
           */}
           <div className="grid-item tag-react tag-apis tag-game" onMouseEnter={onHover}>
@@ -100,6 +132,7 @@ function App() {
               <span className="tag"><a href="/?tag=game">#Game</a></span>
             </div>
           </div>
+
 
           {/*
           * Tech Personality Quiz
@@ -140,15 +173,74 @@ function App() {
             </div>
           </div>
 
+          {/*
+          * LIVE
+          * Blog
+          */}
+          <div className="grid-item tag-react tag-tool" onMouseEnter={onHover} style={{ overflow: 'scroll', maxHeight: '35em' }}>
+            <div style={{ height: '100vh' }}>
+              <iframe onLoad={() => window.iFrameResize && window.iFrameResize({}, document.querySelector('iframe'))} src="https://2cc4178243294efb8d09d6768be36fe4.elf.site" style={{ border: 'none', width: '100%', height: '100%' }}></iframe>
+            </div>
+          </div>
         </div>
       </main>
-      <Center>
+      <Center style={{ marginBottom: '5em' }}>
         <h3>More Coming Soon!</h3>
       </Center>
-      <footer>
-
-        <p>&copy; 2024 Ben J. Smith. All rights reserved.</p>
+      <footer className="footer">
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        />
+        <div className="footer-socials" style={{ fontSize: "1.5rem" }}>
+          <a
+            href="https://bsky.app/profile/benjs.uk"
+            target="_blank"
+            className="footer-social"
+          >
+            <i className="fa-brands fa-bluesky"></i>
+          </a>
+          <a
+            href="https://blog.benjs.uk/rss.xml"
+            target="_blank"
+            className="footer-social"
+          >
+            <i className="fa-solid fa-rss-square"></i>
+          </a>
+          <a
+            href="https://github.com/barxilly"
+            target="_blank"
+            className="footer-social"
+          >
+            <i className="fa-brands fa-github"></i>
+          </a>
+          <a href="https://dev.to/bendotjs" target="_blank" className="footer-social">
+            <i className="fa-brands fa-dev"></i>
+          </a>
+          <a
+            href="https://wa.me/447495338673"
+            target="_blank"
+            className="footer-social"
+          >
+            <i className="fa-brands fa-whatsapp"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/benjsuk/"
+            target="_blank"
+            className="footer-social"
+          >
+            <i className="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="mailto:ben@benjs.uk" target="_blank" className="footer-social">
+            <i className="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+        <p>
+          &copy; {new Date().getFullYear()}-{new Date().getFullYear() + 1} Ben Smith.
+          All rights reserved.
+        </p>
       </footer>
+      <script src="https://static.elfsight.com/platform/platform.js" async></script>
       <img alt="One Pixel" src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png" onLoad={pageloaded} />
     </>
   )
@@ -156,3 +248,4 @@ function App() {
 
 
 export default App
+
