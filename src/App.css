@@ -171,8 +171,10 @@ main {
     animation: close 0.3s ease forwards;
 }
 
-.grid-item:hover .hover-open {
-    animation: open 0.3s ease forwards;
+@media (min-width: 768px) {
+    .grid-item:hover .hover-open {
+        animation: open 0.3s ease forwards;
+    }
 }
 
 @keyframes open {
