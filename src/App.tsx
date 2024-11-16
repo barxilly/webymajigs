@@ -12,6 +12,8 @@ declare global {
 }
 
 const bgm = new Audio('/sounds/back.mp3');
+const select = new Audio('/sounds/Select.wav');
+
 bgm.loop = true;
 bgm.volume = 0.25;
 
@@ -42,8 +44,9 @@ function App() {
   }
 
   async function onHover() {
-    const select = new Audio('/sounds/Select.wav');
-    select.play();
+    if (!bgm.paused) {
+      select.play();
+    }
 
   }
 
@@ -113,9 +116,9 @@ function App() {
 
           {/*
           * LIVE
-          * Blog
+          * Counter
           */}
-          <div className="grid-item tag-react tag-tool" onMouseEnter={onHover} style={{ overflow: 'scroll', maxHeight: '35em' }}>
+          <div className="grid-item" onMouseEnter={onHover} style={{ overflow: 'scroll', maxHeight: '35em' }}>
             <iframe onLoad={() => window.iFrameResize && window.iFrameResize({}, document.querySelector('iframe'))} src="https://c92a78ac8af14b838c7918432ad9bcc1.elf.site" style={{ border: 'none', width: '100% !important' }}></iframe>
           </div>
 
@@ -163,13 +166,13 @@ function App() {
           {/*
           * Blog
           */}
-          <div className="grid-item tag-react tag-tool" onMouseEnter={onHover}>
+          <div className="grid-item tag-react tag-me" onMouseEnter={onHover}>
             <div className="item-image" onClick={() => window.open('https://blog.benjs.uk')}><img className="item-image" src="/images/b.png" alt="quiz" /><h3 className="hover-open">Open</h3></div>
             <h2 className="item-title" onClick={() => window.open('https://blog.benjs.uk')}>My Blog</h2>
             <p className="item-desc" onClick={() => window.open('https://blog.benjs.uk')}>Because I'm opinionated.</p>
             <div className="item-tags">
               <span className="tag"><a href="/?tag=react">#React</a></span>
-              <span className="tag"><a href="/?tag=tool">#Me</a></span>
+              <span className="tag"><a href="/?tag=me">#Me</a></span>
             </div>
           </div>
 
@@ -177,11 +180,25 @@ function App() {
           * LIVE
           * Blog
           */}
-          <div className="grid-item tag-react tag-tool" onMouseEnter={onHover} style={{ overflow: 'scroll', maxHeight: '35em' }}>
+          <div className="grid-item" onMouseEnter={onHover} style={{ overflow: 'scroll', maxHeight: '35em' }}>
             <div style={{ height: '100vh' }}>
-              <iframe onLoad={() => window.iFrameResize && window.iFrameResize({}, document.querySelector('iframe'))} src="https://2cc4178243294efb8d09d6768be36fe4.elf.site" style={{ border: 'none', width: '100%', height: '100%' }}></iframe>
+              <iframe onLoad={() => window.iFrameResize && window.iFrameResize({}, document.querySelector('iframe'))} src="https://2cc4178243294efb8d09d6768be36fe4.elf.site" style={{ border: 'none', width: '100%', height: '100% ' }}></iframe>
             </div>
           </div>
+
+          {/*
+          * My Page
+          */}
+          <div className="grid-item tag-react tag-me" onMouseEnter={onHover}>
+            <div className="item-image" onClick={() => window.open('https://benjs.uk')}><img className="item-image" src="/images/me.png" alt="quiz" /><h3 className="hover-open">Open</h3></div>
+            <h2 className="item-title" onClick={() => window.open('https://benjs.uk')}>My Personal Website</h2>
+            <p className="item-desc" onClick={() => window.open('https://benjs.uk')}>My life in one place. WIP</p>
+            <div className="item-tags">
+              <span className="tag"><a href="/?tag=react">#React</a></span>
+              <span className="tag"><a href="/?tag=me">#Me</a></span>
+            </div>
+          </div>
+
         </div>
       </main>
       <Center style={{ marginBottom: '5em' }}>
